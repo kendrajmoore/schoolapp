@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <legend>schools-new</legend>
-    <form method="POST" action="/schools">
+    <legend>Edit Form</legend>
+    <form method="POST" action="/reviews/{{form._id}}?_method=PUT">
       {{> schools-form }}
     </form>
     <button style="float:right;" onclick="location.href='/'" class="btn btn-primary">

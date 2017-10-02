@@ -27,7 +27,7 @@ app.set('view engine', 'handlebars');
 // INDEX
 app.get('/', function (req, res) {
   school.find(function(err, school) {
-  res.render('school-index', {schools: schools});
+  res.render('school-index', {school: school});
 })
 });
 
