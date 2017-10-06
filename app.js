@@ -8,7 +8,7 @@ var exphbs  = require('express-handlebars');
 // app.js
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/schoolapp');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/schoolapp');
 
 // OUR MOCK ARRAY OF PROJECTS
 var School =  mongoose.model('School', {
@@ -47,6 +47,6 @@ app.get('/schools/new', function (req, res) {
 })
 
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Portfolio App listening on port 3000!')
 })
