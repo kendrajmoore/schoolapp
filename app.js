@@ -11,24 +11,33 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/schoolapp');
 
 // OUR MOCK ARRAY OF PROJECTS
-var school =  mongoose.model('School', {
+var School =  mongoose.model('School', {
   name: String ,
   address: String ,
-   grades:  String,
-   activities: String,
-   demographics: String,
+  grades:  String,
+  activities: String,
+  demographics: String,
   scores: String,
-   stars: String
+  stars: String
 });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+app.get('/get-school-data', function (req, res) {
+  request('https://data.sfgov.org/resource/mmsr-vumy.json', function (error, response, body) {
+    // loop over body, and save each object to your School collection
+    console.log(body);
+  })
+})
+
+// SCHOOLS
+
 // INDEX
 app.get('/', function (req, res) {
-  school.find(function(err, school) {
-  res.render('school-index', {school: school});
-})
+  School.find(function(err, schools) {
+    res.render('schools-index', {schools: schools});
+  });
 });
 
 
@@ -37,13 +46,6 @@ app.get('/schools/new', function (req, res) {
   res.render('schools-new', {});
 })
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!')
-// })
-//
-// app.get('/', function (req, res) {
-//   res.render('home', {msg: 'Hello World!'});
-// })
 
 app.listen(3000, function () {
   console.log('Portfolio App listening on port 3000!')
