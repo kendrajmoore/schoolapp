@@ -24,12 +24,12 @@ var School =  mongoose.model('School', {
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/get-school-data', function (req, res) {
-  request('https://data.sfgov.org/resource/mmsr-vumy.json', function (error, response, body) {
-    // loop over body, and save each object to your School collection
-    console.log(body);
-  })
-})
+// app.get('/get-school-data', function (req, res) {
+//   request('https://data.sfgov.org/resource/mmsr-vumy.json', function (error, response, body) {
+//     // loop over body, and save each object to your School collection
+//     console.log(body);
+//   })
+// })
 
 // SCHOOLS
 
@@ -46,6 +46,14 @@ app.get('/schools/new', function (req, res) {
   res.render('schools-new', {});
 })
 
+//Update
+
+app.put('/schools/:id', function (req, res) {
+    console.log(req.body)
+  Review.findByIdAndUpdate(req.params.id,  req.body, function(err, review) {
+    res.redirect('/schools/' + review._id);
+  })
+})
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Portfolio App listening on port 3000!')

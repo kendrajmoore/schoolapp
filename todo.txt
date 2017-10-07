@@ -1,5 +1,5 @@
 V0
-write the script to put schools in database
+
 make sure that the schools are displayed
 make a route to update information
 push to heroku
@@ -10,7 +10,7 @@ push to heroku
 V1
 CRUD reviews on schools - "mongoose reference subdocuments" - school.reviews = [_id's]
 heroku
-
+write the script to put schools in database
 
 --------------
 add in the map
