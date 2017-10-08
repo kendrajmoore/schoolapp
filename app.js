@@ -46,14 +46,39 @@ app.get('/schools/new', function (req, res) {
   res.render('schools-new', {});
 })
 
-//Update
-
-app.put('/schools/:id', function (req, res) {
-    console.log(req.body)
-  Review.findByIdAndUpdate(req.params.id,  req.body, function(err, review) {
-    res.redirect('/schools/' + review._id);
+app.post('/schools', function (req, res) {
+  School.create(req.body, function(err, school) {
+    res.redirect('/schools/' + school._id);
   })
 })
+
+app.get('/schools/:id', function (req, res) {
+  School.findById(req.params.id).exec(function (err, school) {
+    res.render('schools-show', {school: school});
+  })
+})
+
+//Update
+
+// app.put('/schools/:id', function (req, res) {
+//     console.log(req.body)
+//   Review.findByIdAndUpdate(req.params.id,  req.body, function(err, school) {
+//     res.redirect('/schools/' + review._id);
+//   })
+// })
+//
+// app.get('/reviews/:id/edit', function (req, res) {
+//     Review.findById(req.params.id, function(err, review) {
+//       res.render('reviews-edit', {review: review});
+//     })
+//   })
+//
+//   app.delete('/reviews/:id', function (req, res) {
+//     Review.findByIdAndRemove(req.params.id, function(err) {
+//       res.redirect('/');
+//     })
+  // });
+
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Portfolio App listening on port 3000!')
