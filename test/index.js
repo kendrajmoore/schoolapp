@@ -29,10 +29,10 @@ describe('School', function() {
 
 describe('School', function() {
   //update
-  it('should delete the page', function (done) {
+  it('should update the page', function (done) {
     chai.request('localhost:3000')
     .get('/schools/:id')
-    .end(function (err, review){
+    .end(function (err, school){
       res.status.should.be.equal(200);
       done();
     });
