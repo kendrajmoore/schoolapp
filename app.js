@@ -1,14 +1,15 @@
 var express = require('express')
 var app = express()
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.js
 var exphbs  = require('express-handlebars');
-// app.js
+
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/schoolapp');
+var db = mongoose.connection;
+var collection = db.collection('school-list');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
