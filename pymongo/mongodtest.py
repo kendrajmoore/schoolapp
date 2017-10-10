@@ -1,4 +1,7 @@
-# import urllib.request, json
-# with urllib.request.urlopen("https://data.sfgov.org/resource/mmsr-vumy.json") as url:
-#     data = json.loads(url.read().decode())
-#     print(data)
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.test
+db.test.count()
+result = db.test.insert_many([{'x': i} for i in range(160)])
+result.inserted_ids
