@@ -1,14 +1,22 @@
 V0
 
-make sure that the schools are displayed
-make a route to update information
+make sure that the schools are displayed - done
+pull data from API - done
 push to heroku
+run the script in heroku
 
 
 --------------
 
 V1
-CRUD reviews on schools - "mongoose reference subdocuments" - school.reviews = [_id's]
+CRUD reviews
+heroku
+
+
+-------------------
+v2
+
+associate schools and reviews - "mongoose reference subdocuments" - school.reviews = [_id's]
 heroku
 write the script to put schools in database
 

@@ -6,8 +6,8 @@
     <div class="col-sm-4">
         <form method="POST" action="/schools/{{this._id}}?_method=DELETE">
         <div class="buttons">
-        <!-- <button type="submit" class="btn btn-danger">Delete</button>
-        </div> -->
+        <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
+        </div>
         </form>
 
         <div class="buttons">
@@ -16,11 +16,12 @@
         </div>
         <div class="schoolindex">
             <a href="/schools/{{this._id}}">
-            <h3>{{this.name}}</h3></a>
+              <h3>{{this.name}}</h3>
+            </a>
             <small>{{this.address}}</small>
             <p>{{this.grades}}</p>
             </br>
-            <p style="float:right;">Rating: {{this.rating}}</p>
+            <p>Rating: {{this.rating}}</p>
             </br>
         </div>
 
