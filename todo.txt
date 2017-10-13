@@ -1,5 +1,16 @@
 V0
 
+Done-add comments to school
+  Done - add comment form to schools-show
+  DONE - make app.post('/schools/:id/comments')
+  -
+
+
+------------
+
+
+
+
 make sure that the schools are displayed - done
 pull data from API - done
 push to heroku
@@ -10,6 +21,7 @@ run the script in heroku
 
 V1
 CRUD reviews
+CRUD comments
 heroku
 
 

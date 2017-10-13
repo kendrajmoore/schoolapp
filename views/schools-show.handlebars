@@ -1,4 +1,3 @@
-<a href="/">Back to Home</a>
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
     <h1>{{school.name}}</h1>
@@ -6,4 +5,14 @@
     <p>Rating: {{school.rating}} out of 5</p>
     <p>{{school.activities}}</p>
   </div>
+  <form method="POST" action="/schools/{{school._id}}/comments">
+   <textarea class='form-control' name="content" placeholder="Comment"></textarea>
+   <div class="text-right">
+     <button type="submit">Save</button>
+   </div>
+ </form>
 </div>
+
+{{#each school.comments}}
+  <p>{{this.content}}</p>
+{{/each}}

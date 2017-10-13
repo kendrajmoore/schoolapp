@@ -16,6 +16,10 @@ app.set('view engine', 'handlebars');
 
 require('./controllers/schools')(app);
 
+require('./controllers/comments.js')(app);
+
+require('./controllers/reviews.js')(app);
+
 app.listen(process.env.PORT || 3000, function () {
   console.log('Portfolio App listening on port 3000!')
 })
