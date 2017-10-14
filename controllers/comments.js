@@ -35,5 +35,11 @@ module.exports = function(app) {
     })
   })
 
-  //DELETE COMMENT 
+  //DELETE COMMENT
+  app.delete('/schools/:id/comment', function (req, res) {
+    School.findByIdAndRemove(req.params.id, function(err) {
+      res.redirect('/');
+    })
+  })
+  
 };
