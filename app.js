@@ -5,7 +5,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var exphbs  = require('express-handlebars');
 
-
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/schoolapp');
 var db = mongoose.connection;

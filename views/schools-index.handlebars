@@ -3,23 +3,18 @@
 </br>
 <div class="row justify-content-between">
   {{#each schools}}
-    <div class="col-sm-4">
-        <div class="schoolindex">
+    <div style="height: 500px"; class="col-sm-4">
+        <div style="margin: 40px:" class="schoolindex">
             <a href="/schools/{{this._id}}">
               <h3>{{this.title}}</h3>
             </a>
             <small>{{this.address}}</small>
             <p>{{this.grades}}</p>
-            </br>
-            <p>Rating: {{this.rating}}</p>
-            </br>
-        </div>
+              <p>Rating: {{this.rating}}</p>
+            <a href="/schools/{{this._id}}/review">Review</a>
+            <br>
         <a href="/schools/{{this._id}}">School Information</a>
-        <br>
-        <!-- <a href="">Review</a> -->
-
-
-      <hr>
+      </div>
     </div>
   {{/each}}
 </div>

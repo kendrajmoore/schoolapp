@@ -42,7 +42,7 @@ module.exports = function(app) {
       res.render('schools-edit', {school: school});
     })
   })
-
+//DELETE
   app.delete('/schools/:id', function (req, res) {
     School.findByIdAndRemove(req.params.id, function(err) {
       res.redirect('/');

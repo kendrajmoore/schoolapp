@@ -3,8 +3,8 @@ var Review = require('../models/review');
 
 
 module.exports = function(app) {
-//POST COMMENT
-  app.post('/schools/:id/reviews', function (req, res) {
+//POST ReVIEW
+  app.post('/schools/:id/review', function (req, res) {
     // FIND THE PARENT SCHOOL
     School.findById(req.params.id).exec(function (err, school) {
       var review = new Review(req.body);
@@ -20,8 +20,8 @@ module.exports = function(app) {
       })
     })
   })
-//EDIT COMMENT
-  app.get('/schools/:id/edit', function (req, res) {
+//EDIT
+  app.get('/schools/:id/review', function (req, res) {
     School.findById(req.params.id, function(err, school) {
       var review = new Review(req.body);
 
@@ -34,8 +34,8 @@ module.exports = function(app) {
     })
   })
 
-  //DELETE COMMENT
-  app.delete('/schools/:id/comment', function (req, res) {
+  //DELETE
+  app.delete('/schools/:id/review', function (req, res) {
     School.findByIdAndRemove(req.params.id, function(err) {
       res.redirect('/');
     })

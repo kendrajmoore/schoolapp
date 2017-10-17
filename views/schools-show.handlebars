@@ -5,20 +5,11 @@
     <h4>{{school.address}}</h4>
     <p>Rating: {{school.rating}} out of 5</p>
     <h5>{{school.grades}}</h5>
-  <!-- </div>
-  <div> -->
-  <!-- <form method="POST" action="/schools/{{school._id}}"> -->
    <textarea class='form-control' name="content" placeholder="Comment"></textarea>
    <div class="text-right">
-           <!-- <a href="/schools/{{this._id}}">School Information</a> -->
-
        <button type="Save">Save</button>
-
-     <!-- <button type="delete">Delete</button>
-     <button type="review">Add a review</button> -->
    </div>
  </form>
-</div>
 
 {{#each school.comments}}
   <p>{{this.content}}</p>
