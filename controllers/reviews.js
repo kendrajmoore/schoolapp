@@ -3,7 +3,7 @@ var Review = require('../models/review');
 
 
 module.exports = function(app) {
-//POST ReVIEW
+//CREATE ReVIEW
   app.post('/schools/:id/review', function (req, res) {
     // FIND THE PARENT SCHOOL
     School.findById(req.params.id).exec(function (err, school) {
@@ -20,8 +20,14 @@ module.exports = function(app) {
       })
     })
   })
+
+  // NEW
+  app.get('/schools/:id/reviews/new', function (req, res) {
+    res.render('reviews-new', {});
+  })
+
 //EDIT
-  app.get('/schools/:id/review', function (req, res) {
+  app.get('/schools/:schoolId/reviews/id', function (req, res) {
     School.findById(req.params.id, function(err, school) {
       var review = new Review(req.body);
 
@@ -33,9 +39,23 @@ module.exports = function(app) {
     })
     })
   })
+//UPDATE
+  app.put('/schools/:schoolId/reviews/id', function (req, res) {
+    console.log(req.body)
+    School.findByIdAndUpdate(req.params.id,  req.body, function(err, school) {
+      res.redirect('/schools/' + school._id);
+    })
+  })
 
+  // EDIT
+
+  app.get('/schools/:id/edit', function (req, res) {
+    School.findById(req.params.id, function(err, school) {
+      res.render('schools-edit', {school: school});
+    })
+  })
   //DELETE
-  app.delete('/schools/:id/review', function (req, res) {
+  app.delete('/schools/:id/', function (req, res) {
     School.findByIdAndRemove(req.params.id, function(err) {
       res.redirect('/');
     })

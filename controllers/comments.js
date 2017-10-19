@@ -21,6 +21,12 @@ module.exports = function(app) {
       })
     })
   })
+
+  // NEW
+  app.get('/schools/:id/comments/new', function (req, res) {
+    res.render('comments-new', {});
+  })
+
 //EDIT COMMENT
   app.get('/schools/:id/edit', function (req, res) {
     School.findById(req.params.id, function(err, school) {
@@ -34,12 +40,19 @@ module.exports = function(app) {
     })
     })
   })
+//Update
+  app.put('/schools/:schoolId/comments/id', function (req, res) {
+    console.log(req.body)
+    School.findByIdAndUpdate(req.params.id,  req.body, function(err, school) {
+      res.redirect('/schools/' + school._id);
+    })
+  })
 
   //DELETE COMMENT
-  app.delete('/schools/:id/comment', function (req, res) {
+  app.delete('/schools/:id/comments', function (req, res) {
     School.findByIdAndRemove(req.params.id, function(err) {
       res.redirect('/');
     })
   })
-  
+
 };

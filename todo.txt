@@ -11,8 +11,10 @@ Done-add comments to school
 
 
 
+
 make sure that the schools are displayed - done
 pull data from API - done
+reviews-new
 push to heroku
 run the script in heroku
 
