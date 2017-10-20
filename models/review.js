@@ -4,10 +4,7 @@ var mongoose = require('mongoose'),
     var ReviewSchema = new Schema({
       title             : { type: String, required: true }
       , description         : { type: String }
-      // , rating score         : { type: String, required: true }
+
     });
 
-    var Review = mongoose.model('Review', ReviewSchema);
-
-
-module.exports = Review
+module.exports = mongoose.model('Review', ReviewSchema);

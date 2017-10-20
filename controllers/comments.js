@@ -5,7 +5,7 @@ var Comment = require('../models/comment');
 
 module.exports = function(app) {
 //POST COMMENT
-  app.post('/schools/:id', function (req, res) {
+  app.post('/schools/:schoolId', function (req, res) {
     // FIND THE PARENT SCHOOL
     School.findById(req.params.id).exec(function (err, school) {
       var comment = new Comment(req.body);
@@ -24,7 +24,7 @@ module.exports = function(app) {
 
 
 //EDIT COMMENT
-  app.get('/schools/:id/edit', function (req, res) {
+  app.get('/schools/:schoolId/edit', function (req, res) {
     School.findById(req.params.id, function(err, school) {
       var comment = new Comment(req.body);
 
@@ -37,7 +37,7 @@ module.exports = function(app) {
     })
   })
 //Update
-  app.put('/schools/:schoolId/comments/id', function (req, res) {
+  app.put('/schools/:schoolId/comments/:id', function (req, res) {
     console.log(req.body)
     School.findByIdAndUpdate(req.params.id,  req.body, function(err, school) {
       res.redirect('/schools/' + school._id);
@@ -45,7 +45,7 @@ module.exports = function(app) {
   })
 
   //DELETE COMMENT
-  app.delete('/schools/:id/comments', function (req, res) {
+  app.delete('/schools/:schoolId/comments/:id', function (req, res) {
     School.findByIdAndRemove(req.params.id, function(err) {
       res.redirect('/');
     })
