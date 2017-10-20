@@ -5,7 +5,7 @@ var Comment = require('../models/comment');
 
 module.exports = function(app) {
 //POST COMMENT
-  app.post('/schools/:id/comments', function (req, res) {
+  app.post('/schools/:id', function (req, res) {
     // FIND THE PARENT SCHOOL
     School.findById(req.params.id).exec(function (err, school) {
       var comment = new Comment(req.body);
@@ -22,10 +22,6 @@ module.exports = function(app) {
     })
   })
 
-  // NEW
-  app.get('/schools/:id/comments/new', function (req, res) {
-    res.render('comments-new', {});
-  })
 
 //EDIT COMMENT
   app.get('/schools/:id/edit', function (req, res) {

@@ -12,12 +12,14 @@ var collection = db.collection('school-list');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+app.use(express.static('partials'))
 
 require('./controllers/schools')(app);
 
 require('./controllers/comments')(app);
 
-// require('./controllers/reviews')(app);
+require("./controllers/reviews")(app);
+
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Portfolio App listening on port 3000!')

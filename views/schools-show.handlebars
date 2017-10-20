@@ -5,12 +5,14 @@
     <h4>{{school.address}}</h4>
     <p>Rating: {{school.rating}} out of 5</p>
     <h5>{{school.grades}}</h5>
+
+    {{#each school.comments}}
+      <p>{{this.content}}</p>
+        {{/each}}
    <textarea class='form-control' name="content" placeholder="Comment"></textarea>
    <div class="text-right">
        <button type="Save">Save</button>
+       <button style = "color: black", class="nav-link" href="/">Edit</button>
+       <button style = "color: black", class="nav-link" href="/">Delete</button>
    </div>
  </form>
-
-{{#each school.comments}}
-  <p>{{this.content}}</p>
-{{/each}}

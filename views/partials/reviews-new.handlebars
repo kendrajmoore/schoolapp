@@ -1,4 +1,4 @@
-
+<form action="/schools/{{school._id}}/reviews/new">
 <div class="form-group">
   <label for="title">Title</label><br>
   <input class="form-control" type="text" name="title" value="{{school.title}}"/>
@@ -20,12 +20,13 @@
         <option value=2>2 - Probably not this one</option>
         <option value=3>3 - Your child might succeed in life</option>
         <option value=4>4 - Pretty good</option>
-        <option value=5>5 - Your child is going thank you</option>
+        <option value=5>5 - Your child is going to thank you</option>
       </select>
 
 </div>
 <p>
-       <button class="btn btn-primary">Save</button>
-       <button class="btn btn-primary">Edit</button>
-       <button class="btn btn-primary">Delete</button>
+
+       <button class="btn btn-primary" href ="">Save</button>
+       <button class="btn btn-primary" href ="/schools/:schoolId/reviews/:id">Edit</button>
+       <button class="btn btn-primary" href = "/schools/">Delete</button>
 </p>
