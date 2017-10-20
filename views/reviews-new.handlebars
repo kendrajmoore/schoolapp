@@ -1,7 +1,9 @@
+<h1>{{school.title}}</h1>
+
 <form action="/schools/{{school._id}}/reviews/new">
 <div class="form-group">
   <label for="title">Title</label><br>
-  <input class="form-control" type="text" name="title" value="{{school.title}}"/>
+  <input class="form-control" type="text" name="title" value=""/>
 </div>
 <!--  TITLE -->
 
@@ -9,12 +11,12 @@
 <!-- DESCRIPTION -->
 <div class="form-group">
   <label for="description">Description</label><br>
-  <textarea class="form-control" name="description" rows="10" />{{school.description}}</textarea>
+  <textarea class="form-control" name="description" rows="10" /></textarea>
 </div>
 
 <!-- RATING -->
 <div class="form-group">
-    <select class="form-control" name="rating" selected={{school.rating}}>
+    <select class="form-control" name="rating">
         <option value="" selected disabled hidden>Rating Score</option>
         <option value=1>1 - Not this one</option>
         <option value=2>2 - Probably not this one</option>

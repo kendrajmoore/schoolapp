@@ -23,59 +23,42 @@ module.exports = function(app) {
 
   // NEW
   app.get('/schools/:schoolId/reviews/new', function (req, res) {
-    res.render('./partials/reviews-new', {});
+    School.findById(req.params.schoolId, function(err, school) {
+      return res.render('reviews-new', {school: school});
+    })
   })
 
   //EDIT
   app.get('/schools/:schoolId/edit', function (req, res) {
-    School.findById(req.params.id, function(err, school) {
+    School.findById(req.params.schoolId, req.body, function(err, review) {
       var review = new Review(req.body);
 
       review.edit(function(err){
         school.review.unshift(review);
         school.edit();
 
-      return res.render('schools-edit', {school: school});
+      return res.render('schools-edit', {review: review});
     })
     })
   })
 
-// //EDIT
-//   app.get('/schools/:schoolId/reviews/:id', function (req, res) {
-//     // find and update the review
-//     // redirect to the reviews#show '/schools/:schoolId/reviews/:id'
-//
-//     School.findByIdAndUpdate(req.params.id,  req.body, function(err, review) {
-//       res.redirect('/schools/' + req.params.schoolId + '/reviews/' + review._id);
-//     })
-//   })
+
 //UPDATE
   app.put('/schools/:schoolId/reviews/:id', function (req, res) {
     console.log(req.body)
-    School.findByIdAndUpdate(req.params.id,  req.body, function(err, review) {
+    School.findByIdAndUpdate(req.params.schoolId,  req.body, function(err, review) {
       res.redirect('/schools/' + req.params.schoolId);
     })
   })
 
-  // EDIT
 
-  app.get('/schools/:schoolId/edit', function (req, res) {
-    School.findById(req.params.id, req.body, function(err, review) {
-      res.render('schools-edit', {review: review});
-    })
-  })
+
   //DELETE
   app.delete('/schools/:schoolId/reviews/:id', function (req, res) {
-    // find the school
-    // find the review
-    // remove the review from the school.reviews attribute
-    // delete the review
-    // redirect to '/'
-    School.findByIdAndRemove(req.params.id, function(err, review) {
+    School.findByIdAndRemove(req.params.schoolId, function(err, review) {
       review.comments.pull({_id: req.params.review_id})
       review.save
       res.redirect('/');
     })
   })
-
 };
